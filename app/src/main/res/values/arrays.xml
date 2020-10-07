@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="provinsi">
+        <item>Jawa Tengah</item>
+        <item>Jawa Timur</item>
+        <item>Jawa Barat</item>
+        <item>Yogyakarta</item>
+    </string-array>
+
+    <string-array name="kabupaten">
+        <item>Banyumas</item>
+        <item>Purbalingga</item>
+        <item>Banjarnegara</item>
+        <item>Cilacap</item>
+        <item>Kebumen</item>
+    </string-array>
+
+    <string-array name="kecamatan">
+        <item>Purwokerto</item>
+        <item>Ajibarang</item>
+        <item>Purwokerto Timur</item>
+        <item>Purwokerto Utara</item>
+    </string-array>
+
+    <string-array name="desa">
+        <item>Purwokerto</item>
+        <item>Ajibarang</item>
+        <item>Purwokerto Timur</item>
+        <item>Purwokerto Utara</item>
+    </string-array>
+
+    <string-array name="pelayanan">
+        <item>Uji Pertama</item>
+        <item>Uji Berkala</item>
+        <item>Rubah Bentuk</item>
+        <item>NUMPANG UJI MASUK</item>
+        <item>Mutasi MASUK</item>
+    </string-array>
+</resources>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#05104A"
+    tools:context=".registrasi">
+
+
+
+    <TextView
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="PENDAFTARAN AKUN"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:textSize="20sp" />
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#7485E3"
+        android:text="Data yang dimasukkan untuk pendaftaran harus sesuai dengan KTP (Pemilik Kendaraan)."/>
+
+    <ScrollView
+        android:layout_margin="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:textColor="#fff"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NIK"/>
+
+            <EditText
+                android:id="@+id/edregnik"
+                android:background="@drawable/corner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="NIK"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="Nama Lengkap"/>
+
+            <EditText
+                android:id="@+id/edregnama"
+                android:background="@drawable/corner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Nama Lengkap"/>
+
+            <TextView
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Provinsi"/>
+
+            <Spinner
+                android:id="@+id/spregprov"
+                android:background="@drawable/corner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/provinsi"/>
+
+            <TextView
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kabupaten"/>
+
+            <Spinner
+                android:id="@+id/spregkab"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/corner"
+                android:entries="@array/kabupaten"/>
+
+            <TextView
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Kecamatan"/>
+
+            <Spinner
+                android:id="@+id/spregkec"
+                android:background="@drawable/corner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/kecamatan"/>
+
+            <TextView
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Desa/Kelurahan"/>
+
+            <Spinner
+                android:id="@+id/spregdes"
+                android:background="@drawable/corner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:entries="@array/desa"/>
+
+            <TextView
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rt"/>
+
+            <EditText
+                android:id="@+id/edregrt"
+                android:background="@drawable/corner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Rt"/>
+
+            <TextView
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rw"/>
+
+            <EditText
+                android:id="@+id/edregrw"
+                android:background="@drawable/corner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Rw"/>
+
+
+            <TextView
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Handphone"/>
+
+            <EditText
+                android:id="@+id/edregno"
+                android:background="@drawable/corner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="No Handphone"/>
+
+            <TextView
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Password"/>
+
+            <EditText
+                android:background="@drawable/corner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:hint="Password"/>
+
+            <Button
+                android:background="@drawable/lingkaran"
+                android:id="@+id/btregsimpan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Simpan"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
