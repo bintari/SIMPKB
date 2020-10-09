@@ -11,13 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity2">
+        <activity android:name=".Lihat">
 
         </activity>
-        <activity android:name=".reposity">
+        <activity android:name=".MainActivity2" />
+        <activity android:name=".reposity" />
+        <activity android:name=".Splash">
 
         </activity>
-        <activity android:name=".Splash" />
         <activity android:name=".cetak" />
         <activity android:name=".dengannomor" />
         <activity android:name=".tanpanomor" />
@@ -32,7 +33,6 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
