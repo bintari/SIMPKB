@@ -88,6 +88,7 @@
             android:textAlignment="center"/>
 
             <TextView
+                android:onClick="booking"
                 android:layout_margin="10dp"
                 android:background="@drawable/lingkaran"
                 android:layout_width="match_parent"
@@ -97,6 +98,7 @@
                 android:text="BOOKING ANTRIAN"/>
 
             <TextView
+                android:onClick="bukti"
                 android:layout_margin="10dp"
                 android:background="@drawable/lingkaran"
                 android:layout_width="match_parent"
@@ -106,6 +108,7 @@
                 android:text="BUKTI ANTRIAN"/>
 
             <TextView
+                android:onClick="antrian"
                 android:layout_margin="10dp"
                 android:background="@drawable/lingkaran"
                 android:layout_width="match_parent"
@@ -115,6 +118,7 @@
                 android:text="ANTRIAN PELAYANAN"/>
 
             <TextView
+                android:onClick="kontak"
                 android:layout_margin="10dp"
                 android:background="@drawable/lingkaran"
                 android:layout_width="match_parent"

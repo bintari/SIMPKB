@@ -11,8 +11,8 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.simpkb.API.ApiRequestData;
-import com.example.simpkb.API.Retroserver;
+import com.example.simpkb.Api.APIRequestData;
+import com.example.simpkb.Api.RetroServer;
 import com.example.simpkb.Models.ResponseModel;
 import com.example.simpkb.model.RegisterApi;
 import com.example.simpkb.model.Value;
@@ -31,8 +31,8 @@ import retrofit2.http.Field;
 public class registrasi extends AppCompatActivity {
 
 
-    private String nik,nama,provinsi,kabupaten,kecamatan,desa,rt,rw,nohp;
-    private EditText edregnik, edregnama, edregrt,edregrw,edregno;
+    private String nik,nama,provinsi,kabupaten,kecamatan,desa,rt,rw,nohp,password;
+    private EditText edregnik, edregnama, edregrt,edregrw,edregno, edregpass;
     private Spinner spprov,spkab,spkec,spdesa;
     private Button btsave;
 
@@ -46,6 +46,7 @@ public class registrasi extends AppCompatActivity {
         edregrw = findViewById(R.id.edregrw);
         edregno = findViewById(R.id.edregno);
         edregrt = findViewById(R.id.edregrt);
+        edregpass = findViewById(R.id.edregpass);
 
         spprov = findViewById(R.id.spregprov);
         spkab = findViewById(R.id.spregkab);
@@ -66,6 +67,7 @@ public class registrasi extends AppCompatActivity {
                 rt = edregrt.getText().toString();
                 rw = edregrw.getText().toString();
                 nohp = edregno.getText().toString();
+                password = edregpass.getText().toString();
 
                 if (nik.trim().equals("")){
                     edregnik.setError("NIK Tidak Boleh Kosong");
@@ -74,9 +76,11 @@ public class registrasi extends AppCompatActivity {
                 } else if (rt.trim().equals("")){
                     edregrt.setError("RT Tidak Boleh Kosong");
                 } else if (rw.trim().equals("")){
-                    edregrw.setError("RT Tidak Boleh Kosong");
+                    edregrw.setError("RW Tidak Boleh Kosong");
                 } else if (nohp.trim().equals("")){
-                    edregno.setError("RT Tidak Boleh Kosong");
+                    edregno.setError("nohp Tidak Boleh Kosong");
+                }  else if (password.trim().equals("")){
+                    edregno.setError("nohp Tidak Boleh Kosong");
                 } else {
                     createData();
                 }
@@ -87,8 +91,8 @@ public class registrasi extends AppCompatActivity {
     }
 
     private void createData() {
-        ApiRequestData ardData = Retroserver.konekRetrofit().create(ApiRequestData.class);
-        Call<ResponseModel> simpanData = ardData.ardCreateData(nik,nama,provinsi,kabupaten,kecamatan,desa,rt,rw,nohp);
+        APIRequestData ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
+        Call<ResponseModel> simpanData = ardData.ardCreateData(nik,nama,provinsi,kabupaten,kecamatan,desa,rt,rw,nohp,password);
 
         simpanData.enqueue(new Callback<ResponseModel>() {
             @Override
