@@ -22,6 +22,7 @@ android {
     }
 
 
+
 }
 
 dependencies {
@@ -49,5 +50,8 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.3'
 
     implementation 'com.synnapps:carouselview:0.1.4'
-
+    implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
+    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.6.0'
 }
+

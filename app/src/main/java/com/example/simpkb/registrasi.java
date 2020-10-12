@@ -3,6 +3,7 @@ package com.example.simpkb;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,8 @@ import com.example.simpkb.Api.RetroServer;
 import com.example.simpkb.Models.ResponseModel;
 import com.example.simpkb.model.RegisterApi;
 import com.example.simpkb.model.Value;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -94,12 +97,16 @@ public class registrasi extends AppCompatActivity {
         APIRequestData ardData = RetroServer.konekRetrofit().create(APIRequestData.class);
         Call<ResponseModel> simpanData = ardData.ardCreateData(nik,nama,provinsi,kabupaten,kecamatan,desa,rt,rw,nohp,password);
 
+
+
         simpanData.enqueue(new Callback<ResponseModel>() {
             @Override
             public void onResponse(Call<ResponseModel> call, Response<ResponseModel> response) {
                 int kode = response.body().getKode();
                 String pesan = response.body().getPesan();
 
+                Intent i = new Intent (registrasi.this, MainActivity.class);
+                startActivity(i);
                 Toast.makeText(registrasi.this, "Kode : "+kode+ "Pesan"+pesan, Toast.LENGTH_SHORT).show();
                 finish();
             }

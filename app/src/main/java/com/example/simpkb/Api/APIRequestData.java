@@ -12,6 +12,7 @@ import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface APIRequestData {
     @GET("read.php")
@@ -67,6 +68,9 @@ public interface APIRequestData {
                                        @Field("nohp") String nohp,
                                        @Field("password") String password
     );
-    @POST("/auth")
-    Call<ResponseModel> userLogin(@Body final LoginModel body);
+//    @POST("/auth")
+//    Call<ResponseModel> userLogin(@Body final LoginModel body);
+
+    @GET("/auth")
+    Call<ResponseModel> userLogin(@Query("body") LoginModel  body);
 }

@@ -5,13 +5,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 public class booking extends AppCompatActivity {
+    private TextView usernamebok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_booking);
+
+        usernamebok = findViewById(R.id.usernamebok);
+
+        Intent intent = getIntent();
+
+
+        if (intent.getExtras()!=null){
+            String passedusername = intent.getStringExtra("data");
+            usernamebok.setText(passedusername);
+        }
     }
 
     public void tanpa(View view) {
