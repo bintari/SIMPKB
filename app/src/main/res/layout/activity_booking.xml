@@ -28,6 +28,7 @@
             android:src="@mipmap/penguji" />
 
         <TextView
+            android:id="@+id/usernamebok"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="nama"
@@ -64,6 +65,7 @@
 
 
             <TextView
+                android:onClick="tanpa"
                 android:layout_margin="10dp"
                 android:background="@drawable/lingkaran"
                 android:layout_width="match_parent"
@@ -73,6 +75,7 @@
                 android:text="TANPA NOMOR UJI"/>
 
             <TextView
+                android:onClick="nomor"
                 android:layout_margin="10dp"
                 android:background="@drawable/lingkaran"
                 android:layout_width="match_parent"

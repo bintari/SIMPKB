@@ -5,14 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".tanpanomor">
+    android:background="@mipmap/bg"
+    tools:context=".Activity.tanpanomor">
 
-
-    <androidx.cardview.widget.CardView
-        android:layout_margin="25dp"
-        app:cardCornerRadius="20dp"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
         <LinearLayout
             android:layout_margin="10dp"
@@ -20,15 +23,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/beranda"/>
+                android:layout_width="118dp"
+                android:layout_height="155dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_baseline_person_24" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
+                android:textColor="#fff"
                 android:textAlignment="center"
                 android:text="nama"/>
 
@@ -41,12 +46,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
+                android:textColor="#fff"
                 android:textAlignment="center"
                 android:text="Informasi Pengujian Pada Tanggal"/>
 
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+
 
     <androidx.cardview.widget.CardView
         android:layout_margin="25dp"
@@ -68,6 +73,7 @@
                 android:text="Tanggal Booking"/>
 
             <EditText
+                android:id="@+id/tanggalbooking"
                 android:layout_margin="10dp"
                 android:background="@drawable/corner"
                 android:layout_width="match_parent"
@@ -89,25 +95,12 @@
                 android:orientation="horizontal">
 
                  <EditText
+                     android:id="@+id/nomorkendaraan"
                     android:layout_margin="10dp"
                     android:background="@drawable/corner"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="R" />
-
-                <EditText
-                    android:layout_margin="10dp"
-                    android:background="@drawable/corner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint=" 1 2 3 4 " />
-
-                <EditText
-                    android:layout_margin="10dp"
-                    android:background="@drawable/corner"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:hint="A B " />
+                    android:hint="R 12345 AB" />
 
             </LinearLayout>
 
@@ -119,6 +112,7 @@
                 android:text="Jenis Pelayanan"/>
 
             <Spinner
+                android:id="@+id/spjenispelayanan"
                 android:background="@drawable/corner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,6 +120,7 @@
                 android:layout_marginBottom="10dp"/>
 
             <Button
+                android:id="@+id/btnsimpantn"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -138,5 +133,11 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+
 
 </LinearLayout>

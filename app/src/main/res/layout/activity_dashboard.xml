@@ -6,71 +6,15 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@mipmap/bg"
-    tools:context=".dashboard">
+    tools:context=".Activity.dashboard">
 
 <!--    <ImageView-->
 <!--        android:layout_width="match_parent"-->
 <!--        android:layout_height="wrap_content"-->
 <!--        android:src="@mipmap/banner" />-->
 
-    <androidx.cardview.widget.CardView
-        android:layout_margin="25dp"
-        app:cardCornerRadius="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <LinearLayout
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/beranda"/>
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#000"
-            android:textAlignment="center"
-            android:text="nama"/>
-        
-        <Button
-            android:background="@drawable/lingkaran"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Detail Profil"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#000"
-                android:textAlignment="center"
-                android:text="Informasi Pengujian Pada Tanggal"/>
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.cardview.widget.CardView
-        android:layout_margin="25dp"
-        app:cardCornerRadius="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:textAlignment="center"
-        android:text="Informasi Tanggal Libur"/>
-    </androidx.cardview.widget.CardView>
-
-
-    <androidx.cardview.widget.CardView
-        android:layout_margin="25dp"
-        app:cardCornerRadius="20dp"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -79,53 +23,121 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/menu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="MENU APLIKASI"
-            android:textColor="#000"
-            android:textAlignment="center"/>
-
-            <TextView
+            <LinearLayout
                 android:layout_margin="10dp"
-                android:background="@drawable/lingkaran"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
-                android:textAlignment="center"
-                android:text="BOOKING ANTRIAN"/>
+                android:orientation="vertical">
 
-            <TextView
-                android:layout_margin="10dp"
-                android:background="@drawable/lingkaran"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#000"
-                android:textAlignment="center"
-                android:text="BUKTI ANTRIAN"/>
+                <ImageView
+                    android:layout_width="125dp"
+                    android:layout_height="137dp"
+                    android:src="@drawable/ic_baseline_person_24" />
 
-            <TextView
-                android:layout_margin="10dp"
-                android:background="@drawable/lingkaran"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#000"
-                android:textAlignment="center"
-                android:text="ANTRIAN PELAYANAN"/>
+                <TextView
+                    android:id="@+id/dasusername"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffff"
+                    android:textAlignment="center"
+                    android:text="nama"/>
 
-            <TextView
-                android:layout_margin="10dp"
-                android:background="@drawable/lingkaran"
+                <Button
+                    android:id="@+id/dasdetail"
+                    android:background="@drawable/lingkaran"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detail Profil"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:textAlignment="center"
+                    android:text="Informasi Pengujian Pada Tanggal"/>
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_margin="25dp"
+                app:cardCornerRadius="20dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#000"
-                android:textAlignment="center"
-                android:text="KONTAK"/>
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:textAlignment="center"
+                    android:text="Informasi Tanggal Libur"/>
+            </androidx.cardview.widget.CardView>
+
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+
+                        android:id="@+id/menu"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="MENU APLIKASI"
+                        android:textColor="#fff"
+                        android:textAlignment="center"/>
+
+                    <TextView
+                        android:onClick="booking"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/lingkaran"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:textAlignment="center"
+                        android:text="BOOKING ANTRIAN"/>
+
+                    <TextView
+                        android:onClick="bukti"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/lingkaran"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:textAlignment="center"
+                        android:text="BUKTI ANTRIAN"/>
+
+                    <TextView
+                        android:onClick="antrian"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/lingkaran"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:textAlignment="center"
+                        android:text="ANTRIAN PELAYANAN"/>
+
+                    <TextView
+                        android:onClick="kontak"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/lingkaran"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:textAlignment="center"
+                        android:text="KONTAK"/>
+
+                </LinearLayout>
+
+
 
         </LinearLayout>
+    </ScrollView>
 
-    </androidx.cardview.widget.CardView>
+
 
 
 </LinearLayout>

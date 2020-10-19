@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#05104A"
-    tools:context=".registrasi">
+    tools:context=".Activity.registrasi">
 
 
 
@@ -71,17 +71,44 @@
                 android:hint="Nama Lengkap"/>
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="Email"/>
+
+            <EditText
+                android:id="@+id/edregemail"
+                android:background="@drawable/corner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#fff"
+                android:text="Alamat"/>
+
+            <EditText
+                android:id="@+id/edregalamat"
+                android:background="@drawable/corner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Alamat Lengkap"/>
+
+            <TextView
                 android:textColor="#fff"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Provinsi"/>
 
             <Spinner
-                android:id="@+id/spregprov"
-                android:background="@drawable/corner"
+                android:id="@+id/spProv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:entries="@array/provinsi"/>
+                android:background="@drawable/corner"
+                android:spinnerMode="dropdown"/>
+                />
 
             <TextView
                 android:textColor="#fff"
@@ -169,10 +196,12 @@
                 android:text="Password"/>
 
             <EditText
+                android:id="@+id/edregpass"
                 android:background="@drawable/corner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
+                android:inputType="textPassword"
                 android:hint="Password"/>
 
             <Button
@@ -182,6 +211,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Simpan"/>
+
+
 
         </LinearLayout>
 

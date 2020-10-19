@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@mipmap/bg"
-    tools:context=".MainActivity">
+    android:scaleType="fitStart"
+    tools:context=".Activity.MainActivity">
 
 
     <ScrollView
@@ -18,15 +19,26 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ViewFlipper
+            <com.synnapps.carouselview.CarouselView
+                android:id="@+id/carouselView"
+                android:background="#fff"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_margin="20dp">
+                android:layout_height="250dp"
+                android:layout_margin="20dp"
+                app:fillColor="#FFFFFFFF"
+                app:pageColor="#00000000"
+                app:radius="2dp"
+                app:slideInterval="3000"
+                app:strokeColor="#FF777777"
+                android:scaleType="centerInside"
+                android:adjustViewBounds="true"
+                app:strokeWidth="1dp">
 
-            </ViewFlipper>
+            </com.synnapps.carouselview.CarouselView>
 
 
             <TextView
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -40,10 +52,11 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginBottom="20dp"
-                android:background="@drawable/lingkaran"
+                android:background="@drawable/antrian"
                 android:orientation="horizontal">
 
                 <LinearLayout
+                    android:id="@+id/lin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
@@ -53,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:text="LOKET 1"
                         android:textColor="#fff"
-                        android:textSize="20dp" />
+                        android:textSize="25dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -67,20 +80,25 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <TextView
-
-                        android:layout_width="300dp"
-                        android:layout_height="wrap_content"
-                        android:gravity="end"
-                        android:text="A12"
-                        android:textColor="#fff"
-                        android:textSize="35dp" />
                 </LinearLayout>
+
+                <TextView
+                    android:id="@+id/nomorantrian"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginEnd="15dp"
+                    android:layout_toRightOf="@id/lin"
+                    android:gravity="end"
+                    android:text=""
+                    android:textColor="#fff"
+                    android:textSize="40dp" />
 
             </RelativeLayout>
 
             <LinearLayout
-                android:id="@+id/d"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
@@ -88,18 +106,20 @@
                 android:paddingBottom="20dp">
 
                 <ImageView
-                    android:id="@+id/img2"
+                    android:id="@+id/login"
                     android:layout_width="149dp"
                     android:layout_height="148dp"
                     android:layout_marginLeft="20dp"
+                    android:scaleType="fitCenter"
                     android:background="@drawable/corner"
                     android:src="@mipmap/icon_login" />
 
                 <ImageView
-                    android:id="@+id/img"
+                    android:id="@+id/lupa"
                     android:layout_width="145dp"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/img2"
+                    android:scaleType="fitCenter"
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:background="@drawable/corner"
@@ -117,12 +137,8 @@
                 android:background="@drawable/lingkaran"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
                     <TextView
+                        android:id="@+id/text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="DAFTAR AKUN"
@@ -132,10 +148,10 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/text"
                         android:text="Daftar Jika Belum Punya Akun"
                         android:textColor="#fff"
                         android:textSize="12dp" />
-                </LinearLayout>
 
             </RelativeLayout>
 
@@ -206,7 +222,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/d"
+                android:id="@+id/e"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
