@@ -4,12 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.Splash">
+    android:orientation="vertical"
+    tools:context=".Retrieve">
 
-
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gif"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_data"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@mipmap/intro_simpkb" />
+        tools:listitem="@layout/card_view">
+
+    </androidx.recyclerview.widget.RecyclerView>
+
 </LinearLayout>

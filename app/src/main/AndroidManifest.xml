@@ -3,40 +3,34 @@
     package="com.example.simpkb">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="false"
         android:icon="@mipmap/penguji"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:hardwareAccelerated="false"
-        android:largeHeap="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Lihat">
-
-        </activity>
-        <activity android:name=".MainActivity2" />
-        <activity android:name=".reposity" />
-        <activity android:name=".Splash">
-
-        </activity>
-        <activity android:name=".cetak" />
-        <activity android:name=".dengannomor" />
-        <activity android:name=".tanpanomor" />
-        <activity android:name=".booking" />
-        <activity android:name=".detail" />
-        <activity android:name=".dashboard" />
-        <activity android:name=".gantipassword" />
-        <activity android:name=".verifikasi" />
-        <activity android:name=".lupapassword" />
-        <activity android:name=".Login">
-
-        </activity>
-        <activity android:name=".registrasi" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Retrieve"></activity>
+        <activity android:name=".Activity.Splash"></activity>
+        <activity android:name=".Activity.cetak" />
+        <activity android:name=".Activity.dengannomor" />
+        <activity android:name=".Activity.tanpanomor" />
+        <activity android:name=".Activity.booking" />
+        <activity android:name=".Activity.detail" />
+        <activity android:name=".Activity.dashboard" />
+        <activity android:name=".Activity.gantipassword" />
+        <activity android:name=".Activity.verifikasi" />
+        <activity android:name=".Activity.lupapassword" />
+        <activity android:name=".Activity.Login" />
+        <activity android:name=".Activity.registrasi" />
+        <activity android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

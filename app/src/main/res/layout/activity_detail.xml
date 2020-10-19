@@ -5,13 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".detail">
+    android:background="@mipmap/bg"
+    tools:context=".Activity.detail">
 
-    <androidx.cardview.widget.CardView
-        android:layout_margin="25dp"
-        app:cardCornerRadius="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_margin="10dp"
@@ -19,15 +15,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/beranda"/>
+                android:layout_width="195dp"
+                android:layout_height="228dp"
+                android:src="@drawable/ic_baseline_person_24" />
 
             <TextView
+                android:id="@+id/namauser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
+                android:textColor="#fff"
                 android:textAlignment="center"
                 android:text="nama"/>
 
@@ -40,12 +38,22 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
+                android:textColor="#fff"
                 android:textAlignment="center"
                 android:text="Informasi Pengujian Pada Tanggal"/>
 
+            <TextView
+                android:id="@+id/nikdetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/corner"
+                android:text="NIK"
+                android:textAlignment="center"
+                android:textColor="#000" />
+
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+
 
     <androidx.cardview.widget.CardView
         android:layout_margin="25dp"
@@ -53,6 +61,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -72,14 +83,16 @@
                 android:text="NIK"
                 android:textColor="#000"/>
 
+
             <TextView
-                android:layout_margin="10dp"
-                android:background="@drawable/corner"
+                android:id="@+id/nikdetailprof"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
+                android:layout_margin="10dp"
+                android:background="@drawable/corner"
+                android:text="NIK"
                 android:textAlignment="center"
-                android:text="NIK"/>
+                android:textColor="#000" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -88,13 +101,15 @@
                 android:textColor="#000"/>
 
             <TextView
-                android:layout_margin="10dp"
-                android:background="@drawable/corner"
+                android:id="@+id/namadetailprof"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#000"
+                android:layout_margin="10dp"
+                android:background="@drawable/corner"
+                android:text="NAMA"
                 android:textAlignment="center"
-                android:text="NAMA"/>
+                android:textColor="#000" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -102,6 +117,7 @@
                 android:textColor="#000"/>
 
             <TextView
+                android:id="@+id/alamatdetailprof"
                 android:layout_margin="10dp"
                 android:background="@drawable/corner"
                 android:layout_width="match_parent"
@@ -117,6 +133,7 @@
                 android:textColor="#000"/>
 
             <TextView
+                android:id="@+id/nohpdetailprof"
                 android:layout_margin="10dp"
                 android:background="@drawable/corner"
                 android:layout_width="match_parent"
@@ -125,7 +142,14 @@
                 android:textAlignment="center"
                 android:text="NO HANDPHONE"/>
 
+            <Button
+                android:background="@drawable/lingkaran"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="simpan"/>
+
         </LinearLayout>
+        </ScrollView>
 
     </androidx.cardview.widget.CardView>
 
