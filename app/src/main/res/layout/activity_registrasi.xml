@@ -120,8 +120,7 @@
                 android:id="@+id/spregkab"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/corner"
-                android:entries="@array/kabupaten"/>
+                android:background="@drawable/corner"/>
 
             <TextView
                 android:textColor="#fff"
@@ -133,8 +132,7 @@
                 android:id="@+id/spregkec"
                 android:background="@drawable/corner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/kecamatan"/>
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:textColor="#fff"
@@ -146,8 +144,7 @@
                 android:id="@+id/spregdes"
                 android:background="@drawable/corner"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:entries="@array/desa"/>
+                android:layout_height="wrap_content"/>
 
             <TextView
                 android:textColor="#fff"

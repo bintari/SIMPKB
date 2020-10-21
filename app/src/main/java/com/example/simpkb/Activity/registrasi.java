@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,9 @@ import com.example.simpkb.Models.ResponseModelReg;
 import com.example.simpkb.R;
 import com.example.simpkb.Spinner.SpinnerInterface;
 import com.example.simpkb.Spinner.SpinnerModel;
+import com.example.simpkb.Spinner.SpinnerModelKab;
+import com.example.simpkb.Spinner.SpinnerModelKec;
+import com.example.simpkb.Spinner.SpinnerModelKel;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -43,10 +47,24 @@ public class registrasi extends AppCompatActivity {
     private EditText edregnik, edregnama, edregemail, edregalamat, edregrt, edregrw, edregno, edregpass;
     private Spinner spprov, spkab, spkec, spdesa;
     private Button btsave;
+    String selectedprov="";
+    String selectedkab="";
+    String selectedkec="";
+    String selectedkel="";
+
+
 
     //Spinner
     private ArrayList<SpinnerModel> arrayModel;
+    private ArrayList<SpinnerModelKab> arrayModelKab;
+    private ArrayList<SpinnerModelKec> arrayModelKec;
+    private ArrayList<SpinnerModelKel> arrayModelKel;
+
     private ArrayList<String> Provinsiname = new ArrayList<String>();
+    private ArrayList<String> kabupatenname = new ArrayList<String>();
+    private ArrayList<String> kecamatanname = new ArrayList<String>();
+    private ArrayList<String> kelurahanname = new ArrayList<String>();
+
     private Spinner Spinnerprov;
     //end spinner
 
@@ -70,10 +88,20 @@ public class registrasi extends AppCompatActivity {
 
         //spinner
         Spinnerprov = findViewById(R.id.spProv);
+//        spkab.setVisibility(View.GONE);
+//        spkec.setVisibility(View.GONE);
+//        spdesa.setVisibility(View.GONE);
+
+
         fetchJSON();
+
+//        kabJSON();
+//        kecJSON();
+//        kelJSON();
+
         //endspinner
-        
-        
+
+
         btsave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,62 +136,242 @@ public class registrasi extends AppCompatActivity {
 
             }
         });
-        
+
     }
-//spinner
-private void fetchJSON() {
 
-    Retrofit retrofit = new Retrofit.Builder()
-            .baseUrl(SpinnerInterface.JSONURL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build();
+    private void fetchJSON() {
 
-    SpinnerInterface api = retrofit.create(SpinnerInterface.class);
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(SpinnerInterface.JSONURL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
-    Call<JsonObject> call = api.getData();
+        SpinnerInterface api = retrofit.create(SpinnerInterface.class);
+
+        Call<JsonObject> call = api.getData();
 
 
-    call.enqueue(new Callback<JsonObject>() {
-        @Override
-        public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-            Log.i("Responsestring", response.body().toString());
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                Log.i("Responsestring", response.body().toString());
+                //Toast.makeText()
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
 
-            //Toast.makeText()
-            if (response.isSuccessful()) {
-                if (response.body() != null) {
+                        arrayModel = new ArrayList<SpinnerModel>();
+                        JsonArray dataProv = response.body().getAsJsonArray("data");
+                        Provinsiname.add("--Pilih Provinsi--");
+                        for (int i = 0; i < dataProv.size(); i++) {
+                            Log.i("onSuccess", dataProv.get(i).getAsJsonObject().get("id").getAsString());
+                            SpinnerModel data = new SpinnerModel(dataProv.get(i).getAsJsonObject().get("id").getAsString(), dataProv.get(i).getAsJsonObject().get("prov").getAsString());
+                            arrayModel.add(data);
+                            Provinsiname.add(data.getProv());
+                        }
+                        String jsonresponse = response.body().toString();
+                        System.out.println("bintari respon body = " + jsonresponse);
 
-                    arrayModel = new ArrayList<SpinnerModel>();
-                    JsonArray dataProv = response.body().getAsJsonArray("data");
-                    for (int i = 0;i < dataProv.size();i++){
-                        Log.i("onSuccess", dataProv.get(i).getAsJsonObject().get("id").getAsString());
-                        SpinnerModel data = new SpinnerModel(dataProv.get(i).getAsJsonObject().get("id").getAsString(),dataProv.get(i).getAsJsonObject().get("prov").getAsString());
-                        arrayModel.add(data);
-                        Provinsiname.add(data.getProv());
+                        ArrayAdapter<String> spinnerprovinsiadapter = new ArrayAdapter<String>(registrasi.this, simple_spinner_item, Provinsiname);
+                        spinnerprovinsiadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+                        Spinnerprov.setAdapter(spinnerprovinsiadapter);
+                        Spinnerprov.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                if(i > 0){
+                                    selectedprov= arrayModel.get(i - 1).getId();
+                                    kabJSON();
+                                }
+                                Log.i("onEmptyResponse", selectedprov);
+                                selectedprov= arrayModel.get(i - 1).getId();
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> adapterView) {
+
+                            }
+                        });
+
+                    } else {
+                        Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                     }
-                    String jsonresponse = response.body().toString();
-                    spinJSON(jsonresponse);
-                    System.out.println("bintari respon body = "+jsonresponse);
-
-                    ArrayAdapter<String> spinnerprovinsiadapter = new ArrayAdapter<String>(registrasi.this, simple_spinner_item, Provinsiname);
-                    spinnerprovinsiadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
-                    Spinnerprov.setAdapter(spinnerprovinsiadapter);
-
-                } else {
-                    Log.i("onEmptyResponse", "Returned empty response");//Toast.makeText(getContext(),"Nothing returned",Toast.LENGTH_LONG).show();
                 }
             }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void kabJSON() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(SpinnerInterface.JSONURL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        SpinnerInterface kab = retrofit.create(SpinnerInterface.class);
+        Call<JsonObject> call = kab.getKab(selectedprov);
+        call.enqueue(new Callback<JsonObject>() {
+
+
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        arrayModelKab = new ArrayList<SpinnerModelKab>();
+                        JsonArray datakab = response.body().getAsJsonArray("data");
+
+                        for (int i = 0;i < datakab.size();i++){
+                            Log.i("onSuccess", datakab.get(i).getAsJsonObject().get("id").getAsString());
+                            SpinnerModelKab data = new SpinnerModelKab(datakab.get(i).getAsJsonObject().get("id").getAsString(),datakab.get(i).getAsJsonObject().get("kab").getAsString());
+                            arrayModelKab.add(data);
+                            kabupatenname.add(data.getKab());
+                        }
+
+                        String jsonresponse = response.body().toString();
+                        System.out.println("bintari respon kabupaten = "+jsonresponse);
+
+                        ArrayAdapter<String> spinnerkab = new ArrayAdapter<String>(registrasi.this, simple_spinner_item, kabupatenname);
+                        spinnerkab.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+                        spkab.setAdapter(spinnerkab);
+                        spkab.setVisibility(View.VISIBLE);
+
+
+                        spkab.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                                if(i > 0){
+                                    selectedkab= arrayModelKab.get(i).getId();
+                                    kecJSON();
+
+                                }
+                                Log.i("onEmptyResponse", selectedkab);
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> adapterView) {
+
+                            }
+                        });
+
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+                Log.i("onEmptyResponse", t.getLocalizedMessage());
+            }
+        });
+    }
+
+    private void kecJSON() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(SpinnerInterface.JSONKec)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        SpinnerInterface kec = retrofit.create(SpinnerInterface.class);
+        Call<JsonObject> call = kec.getKec(selectedkab);
+        call.enqueue(new Callback<JsonObject>() {
+
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+//                Log.i("Responsestring", response.body().toString());
+                if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        arrayModelKec = new ArrayList<SpinnerModelKec>();
+                        JsonArray datakec = response.body().getAsJsonArray("data");
+
+                        for (int i = 0;i < datakec.size();i++){
+                            Log.i("onSuccess", datakec.get(i).getAsJsonObject().get("id").getAsString());
+                            SpinnerModelKec data = new SpinnerModelKec(datakec.get(i).getAsJsonObject().get("id").getAsString(),datakec.get(i).getAsJsonObject().get("kec").getAsString());
+                            arrayModelKec.add(data);
+                            kecamatanname.add(data.getKec());
+
+                        }
+                        String jsonresponse = response.body().toString();
+                        System.out.println("bintari respon kecamatan = "+jsonresponse);
+
+                        ArrayAdapter<String> spinnerkecadapter = new ArrayAdapter<String>(registrasi.this, simple_spinner_item, kecamatanname);
+                        spinnerkecadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+                        spkec.setAdapter(spinnerkecadapter);
+                        spkec.setVisibility(View.VISIBLE);
+
+                        spkec.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                            @Override
+                            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                                if(i > 0){
+                                    selectedkec= arrayModelKec.get(i).getId();
+                                    kelJSON();
+                                }
+                                Log.i("onEmptyResponse", selectedkec);
+                            }
+
+                            @Override
+                            public void onNothingSelected(AdapterView<?> adapterView) {
+
+                            }
+                        });
+
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+
+            }
+        });
+    }
+
+    private void kelJSON() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(SpinnerInterface.JSONURL)
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        SpinnerInterface kel = retrofit.create(SpinnerInterface.class);
+        Call<JsonObject> call = kel.getkel(selectedkec);
+
+        call.enqueue(new Callback<JsonObject>() {
+            @Override
+            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
+
+                if (response.isSuccessful()) {
+                    arrayModelKel = new ArrayList<SpinnerModelKel>();
+                    JsonArray datakel = response.body().getAsJsonArray("data");
+                    for (int i = 0;i < datakel.size();i++){
+                        Log.i("onSuccess", datakel.get(i).getAsJsonObject().get("id").getAsString());
+                        SpinnerModelKel data = new SpinnerModelKel(datakel.get(i).getAsJsonObject().get("id").getAsString(),datakel.get(i).getAsJsonObject().get("kel").getAsString());
+                        arrayModelKel.add(data);
+                        kelurahanname.add(data.getKel());
+                    }
+                    String jsonresponse = response.body().toString();
+                    System.out.println("bintari respon kel = "+jsonresponse);
+                    ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(registrasi.this, simple_spinner_item, kelurahanname);
+                    spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); // The drop down view
+                    spdesa.setAdapter(spinnerAdapter);
+                    spdesa.setVisibility(View.VISIBLE);
+
+
+
+                }
+
+                }
+
+            @Override
+            public void onFailure(Call<JsonObject> call, Throwable t) {
+
+            }
+        });
         }
 
-        @Override
-        public void onFailure(Call<JsonObject> call, Throwable t) {
 
-        }
-    });
-}
-
-
-    private void spinJSON(String response){
-
+    private void spinkabJSON(String response) {
         try {
 
 
@@ -174,14 +382,7 @@ private void fetchJSON() {
                 JSONArray dataArray  = obj.getJSONArray("data");
 
                 for (int i = 0; i < dataArray.length(); i++) {
-//                    SpinnerModel spinnerModel = new SpinnerModel();
                     JSONObject dataobj = dataArray.getJSONObject(i);
-//
-//                    spinnerModel.setProv(dataobj.getString("prov"));
-//                    spinnerModel.setId(dataobj.getString("id"));
-////
-//
-//                    arrayModel.add(spinnerModel);
                     System.out.println("bintari = "+arrayModel);
 
                 }
@@ -199,8 +400,13 @@ private void fetchJSON() {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
+
+        //spinner
+
+
+
+
 
 
     private void createData() {

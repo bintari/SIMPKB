@@ -14,7 +14,12 @@ import retrofit2.http.POST;
 
 public interface ApiRequestAntrian {
     String JSONURL = "http://simpkb.banyumaskab.go.id/apiandroid/";
+
     @GET("antrian1")
     Call<JsonObject> antrian();
+
+    @GET("index")
+    Call<JsonObject> getimage();
+
 
 }

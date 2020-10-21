@@ -23,6 +23,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+            <ImageView
+                android:id="@+id/button_logouttanpa"
+                android:layout_margin="10dp"
+                android:layout_width="39dp"
+                android:layout_height="43dp"
+                android:layout_gravity="right"
+                android:src="@drawable/ic_baseline_exit_to_app_24" />
 
             <ImageView
                 android:layout_width="118dp"
@@ -31,6 +38,7 @@
                 android:src="@drawable/ic_baseline_person_24" />
 
             <TextView
+                android:id="@+id/namabooking"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#fff"
@@ -79,7 +87,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
-                android:hint="hari/bulan/tahun"
                 android:inputType="date"/>
 
             <TextView

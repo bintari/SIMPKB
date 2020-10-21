@@ -1,15 +1,23 @@
 package com.example.simpkb.LOGIN.Util;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.preference.PreferenceManager;
+
+import com.example.simpkb.Activity.Login;
+
+import java.util.HashMap;
+
+import static android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP;
 
 public class SharedPrev {
     public static final String SP_ID = "id";
     public static final String SP_USERNAME = "username";
 
     public static final String SP_SUDAH_LOGIN = "spSudahLogin";
-
+    private SharedPreferences sp;
     public static final String KEY_USERNAME = "username";
     public static final String KEY_NIK = "nik";
     public static final String KEY_PASSWORD = "password";
@@ -33,6 +41,13 @@ public class SharedPrev {
     public static final String KEY_TIME_SEND = "time_send";
     private static final String KEY_USERNAME_SEDANG_LOGIN = "Status_logged_in";
     private static final String KEY_STATUS_SEDANG_LOGIN = "Status_logged_in";
+
+
+
+    private Context _contect;
+    private SharedPreferences.Editor editor;
+    private static final String is_login = "loginsession";
+
 
     public static SharedPreferences getSharedPreference(Context context){
         return PreferenceManager.getDefaultSharedPreferences(context);
@@ -133,6 +148,48 @@ public class SharedPrev {
         editor.remove(KEY_USERNAME_SEDANG_LOGIN);
         editor.remove(KEY_STATUS_SEDANG_LOGIN);
         editor.apply();
+    }
+
+
+    //session login
+
+    public SharedPrev (Context context)
+    {
+        this._contect = context;
+        sp = _contect.getSharedPreferences(KEY_NIK,Context.MODE_PRIVATE);
+        editor = sp.edit();
+
+    }
+
+    public void storeLogin (String nik, String pass){
+        editor.putBoolean(is_login, true);
+        editor.putString(KEY_NIK, nik);
+        editor.putString(KEY_PASSWORD, pass);
+        editor.commit();
+    }
+
+    public HashMap getDetailLogin(){
+        HashMap<String,String> map = new HashMap<>();
+        map.put(KEY_NIK, sp.getString(KEY_NIK,null));
+        map.put(KEY_PASSWORD, sp.getString(KEY_PASSWORD, null));
+        return map;
+
+    }
+
+    public void checkLogin(){
+        if(!this.Logging()){
+            Intent login = new Intent(_contect, Login.class);
+            login.setType(String.valueOf(FLAG_ACTIVITY_CLEAR_TOP));
+            login.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            _contect.startActivity(login);
+
+        }
+
+    }
+
+    public Boolean Logging(){
+        return sp.getBoolean(is_login, false);
+
     }
 
 }

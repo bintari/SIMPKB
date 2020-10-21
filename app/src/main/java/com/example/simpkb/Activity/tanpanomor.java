@@ -7,9 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.simpkb.LOGIN.Util.SharedPrev;
 import com.example.simpkb.Nomorantrian.Api.RetroServer;
 import com.example.simpkb.R;
 import com.example.simpkb.booking1.ApiBooking.ApiRequestBooking;
@@ -27,7 +30,7 @@ public class tanpanomor extends AppCompatActivity {
     Button simpan;
     EditText tanggal, nomor;
     Spinner jenis;
-
+    TextView namabookig;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,19 @@ public class tanpanomor extends AppCompatActivity {
         nomor = findViewById(R.id.nomorkendaraan);
         jenis = findViewById(R.id.spjenispelayanan);
         simpan = findViewById(R.id.btnsimpantn);
+        namabookig = findViewById(R.id.namabooking);
+
+        findViewById(R.id.button_logouttanpa).setOnClickListener(new View.OnClickListener() {
+            @Override public void onClick(View v) {
+                SharedPrev.clearLoggedInUser(getBaseContext());
+                startActivity(new Intent(getBaseContext(),Login.class));
+                finish();
+            }
+        });
+        SharedPrev.setLoggedInStatus(getBaseContext(),1);
+
+        String nama = SharedPrev.getNama(getBaseContext());
+        namabookig.setText(nama);
 
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -113,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     ImageListener imageListener = new ImageListener() {
         @Override
         public void setImageForPosition(int position, ImageView imageView) {

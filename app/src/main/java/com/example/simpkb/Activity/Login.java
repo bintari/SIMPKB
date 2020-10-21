@@ -19,6 +19,8 @@ import com.example.simpkb.LOGIN.UserModel;
 import com.example.simpkb.LOGIN.Util.SharedPrev;
 import com.example.simpkb.R;
 
+import java.util.prefs.Preferences;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -75,11 +77,10 @@ public class Login extends AppCompatActivity {
                     LoginResponse loginResponse = response.body();
 
                     if (loginResponse.getStatus()==1){
-
                         new Handler().postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                LoginResponse loginResponse = response.body();
+                                 LoginResponse loginResponse = response.body();
                                 UserModel userModel = loginResponse.getData();
                                 SharedPrev.setLoggedInStatus(getBaseContext(),1);
                                 SharedPrev.setUsernameLog(getBaseContext(),userModel.getNik());
@@ -87,13 +88,14 @@ public class Login extends AppCompatActivity {
                                 SharedPrev.setNoTelepon(getBaseContext(),userModel.getNotelp());
                                 SharedPrev.setalamat(getBaseContext(),userModel.getNotelp());
 
-
                                 System.out.println("bintari : "+SharedPrev.getLoggedInStatus(getBaseContext()));
                                 System.out.println("bintari username: "+SharedPrev.getUsernameLog(getBaseContext()));
                                 System.out.println("bintari nama: "+SharedPrev.getNama(getBaseContext()));
                                 System.out.println("bintari nomor: "+SharedPrev.getNoTelepon(getBaseContext()));
 //                                assert loginResponse != null;
-                                startActivity(new Intent(Login.this, dashboard.class));
+//                                startActivity(new Intent(Login.this, dashboard.class));
+                                startActivity(new Intent(getBaseContext(),dashboard.class));
+                                finish();
                             }
                         }, 300);
                     }else{
