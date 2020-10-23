@@ -22,7 +22,7 @@ public class detail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
         namauserdet = findViewById(R.id.namauser);
-        nikdet = findViewById(R.id.nikdetail);
+//        nikdet = findViewById(R.id.nikdetail);
         nikdetailprof = findViewById(R.id.nikdetailprof);
         namadetailprof = findViewById(R.id.namadetailprof);
         alamatdetailprof = findViewById(R.id.alamatdetailprof);

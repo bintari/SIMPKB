@@ -1,9 +1,13 @@
 package com.example.simpkb.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -12,12 +16,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.simpkb.LOGIN.LoginResponse;
 import com.example.simpkb.LOGIN.Util.SharedPrev;
 import com.example.simpkb.Nomorantrian.Api.ApiRequestAntrian;
 import com.example.simpkb.Nomorantrian.Api.RetroServer;
 import com.example.simpkb.Nomorantrian.Model.DataModel;
 import com.example.simpkb.Nomorantrian.Model.ResposModelAn;
 import com.example.simpkb.R;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.synnapps.carouselview.CarouselView;
 import com.synnapps.carouselview.ImageListener;
@@ -37,10 +43,13 @@ public class MainActivity extends AppCompatActivity {
     RelativeLayout a, b, c;
     LinearLayout d;
     ImageView login, lupa;
-    TextView nomor;
+    TextView nomor, idkeluar;
+    Context context;
 
     CarouselView carouselView;
     int[] sampleImages = {R.drawable.banner, R.drawable.banner1, R.drawable.banner2};
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,14 +68,26 @@ public class MainActivity extends AppCompatActivity {
         carouselView.setImageListener(imageListener);
 
 
+
         ApiRequestAntrian apiRequestAntrian = RetroServer.koneksiantrian().create(ApiRequestAntrian.class);
         Call<JsonObject> tampilantrian = apiRequestAntrian.antrian();
         tampilantrian.enqueue(new Callback<JsonObject>() {
+
             @Override
-            public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
-                System.out.println("binngepost=="+response.body().getAsJsonObject("data").get("no_antrian"));
-                String cetaknama = response.body().getAsJsonObject("data").get("no_antrian").getAsString();
-                nomor.setText(cetaknama);
+            public void onResponse(Call<JsonObject> status, Response<JsonObject> response) {
+                JsonObject jsonObject = response.body();
+                System.out.println(jsonObject.get("status"));
+                if(jsonObject.get("status").equals(0)){
+                    String cetaknama = "0";
+                    nomor.setText(cetaknama);
+                    System.out.println("status 0");
+                }else {
+//                    String cetaknama = response.body().getAsJsonObject("status").getAsString();
+                    System.out.println("status 1");
+                    String cetaknama = response.body().getAsJsonObject("data").get("no_antrian").getAsString();
+                    nomor.setText(cetaknama);
+
+                }
             }
 
             @Override
@@ -113,11 +134,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
     ImageListener imageListener = new ImageListener() {
         @Override
         public void setImageForPosition(int position, ImageView imageView) {
             imageView.setImageResource(sampleImages[position]);
         }
     };
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        onDestroy();
+        finish();
+    }
 }

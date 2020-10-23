@@ -182,7 +182,7 @@ public class registrasi extends AppCompatActivity {
                                     kabJSON();
                                 }
                                 Log.i("onEmptyResponse", selectedprov);
-                                selectedprov= arrayModel.get(i - 1).getId();
+//                                selectedprov= arrayModel.get(i - 1).getId();
                             }
 
                             @Override
@@ -220,6 +220,7 @@ public class registrasi extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         arrayModelKab = new ArrayList<SpinnerModelKab>();
+                        kabupatenname.clear();
                         JsonArray datakab = response.body().getAsJsonArray("data");
 
                         for (int i = 0;i < datakab.size();i++){
@@ -284,6 +285,7 @@ public class registrasi extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     if (response.body() != null) {
                         arrayModelKec = new ArrayList<SpinnerModelKec>();
+                        kabupatenname.clear();
                         JsonArray datakec = response.body().getAsJsonArray("data");
 
                         for (int i = 0;i < datakec.size();i++){
@@ -343,6 +345,7 @@ public class registrasi extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     arrayModelKel = new ArrayList<SpinnerModelKel>();
+                    kelurahanname.clear();
                     JsonArray datakel = response.body().getAsJsonArray("data");
                     for (int i = 0;i < datakel.size();i++){
                         Log.i("onSuccess", datakel.get(i).getAsJsonObject().get("id").getAsString());

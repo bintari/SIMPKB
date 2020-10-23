@@ -3,7 +3,7 @@
     package="com.example.simpkb">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:allowBackup="true"
@@ -14,8 +14,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Retrieve"></activity>
-        <activity android:name=".Activity.Splash"></activity>
+        <activity android:name=".Retrieve" />
+        <activity android:name=".Activity.Splash" />
         <activity android:name=".Activity.cetak" />
         <activity android:name=".Activity.dengannomor" />
         <activity android:name=".Activity.tanpanomor" />
